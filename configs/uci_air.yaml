@@ -1,0 +1,12 @@
+# UCI Air Quality (download AirQualityUCI.csv from the UCI ML Repository, dataset id 360)
+data:
+  dataset: uci_air
+  path: /path/to/AirQualityUCI.csv
+  split: [0.7, 0.1, 0.2]
+fl: {num_clients: 5, dirichlet_alpha: 0.5}
+train: {hidden: [64, 32, 16], dropout: 0.25, lr: 0.001, batch_size: 16, local_epochs: 5, rounds: 12, patience: 3}
+channel: {noise_std: 0.02, delay_ms: 100, packet_loss: 0.05}
+dp: {enabled: false, epsilon: 1.0, clip_C: 1.0}
+priority: {alpha_c: 0.4, alpha_q: 0.35, alpha_h: 0.25}
+seeds: [0, 1, 2, 3, 4]
+out_dir: results

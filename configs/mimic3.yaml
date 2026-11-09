@@ -1,0 +1,13 @@
+# MIMIC-III physiological-state recognition (requires PhysioNet credentialed access)
+data:
+  dataset: mimic3
+  path: /path/to/mimic-iii-clinical-database-1.4   # directory with CHARTEVENTS.csv.gz, or a pre-extracted vitals CSV
+  max_patients: null
+  split: [0.7, 0.1, 0.2]
+fl: {num_clients: 5, dirichlet_alpha: 0.5}
+train: {hidden: [64, 32, 16], dropout: 0.25, lr: 0.001, batch_size: 16, local_epochs: 5, rounds: 12, patience: 3}
+channel: {noise_std: 0.02, delay_ms: 100, packet_loss: 0.05}
+dp: {enabled: false, epsilon: 1.0, clip_C: 1.0}
+priority: {alpha_c: 0.5, alpha_q: 0.3, alpha_h: 0.2}    # healthcare: alpha_c > alpha_q >= alpha_h
+seeds: [0, 1, 2, 3, 4]
+out_dir: results
