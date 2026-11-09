@@ -98,7 +98,7 @@ tables and 300-dpi figures.
   2 × the pre-disconnection median error for 3 consecutive samples.
 * **DP is off by default** (`dp.enabled: false`) except in the `privacy` experiment (Fig. 3).
 
-## Differential privacy 
+## Differential privacy (corrected method)
 
 The R1 manuscript clipped each client update to an L1 bound C and added Laplace noise of scale 2C/ε (Eq. 13).
 With P model parameters, ‖ξ‖₂ ≈ √(2P)·2C/ε while ‖ū‖₂ ≤ C, so PDI ≥ 2√(2P)/ε (≥ 262 at ε = 0.6 for
