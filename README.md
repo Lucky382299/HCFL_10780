@@ -83,7 +83,7 @@ tables and 300-dpi figures.
 4. For Table I, record a stream to CSV and run `python edge/measure_overhead.py --csv stream.csv` on the Pi.
    Energy needs an INA219 on the Pi supply rail. Without it, the energy column prints N/A.
 
-## Implementation decisions not fully specified in the manuscript
+## Implementation decisions 
 
 * **Client streams.** The counterpart needs temporally ordered data, so the Dirichlet partition
   allocates contiguous blocks (one patient for MIMIC-III, one 24-h day for UCI) instead of single rows.
@@ -98,7 +98,7 @@ tables and 300-dpi figures.
   2 × the pre-disconnection median error for 3 consecutive samples.
 * **DP is off by default** (`dp.enabled: false`) except in the `privacy` experiment (Fig. 3).
 
-## Differential privacy (corrected method)
+## Differential privacy 
 
 The R1 manuscript clipped each client update to an L1 bound C and added Laplace noise of scale 2C/ε (Eq. 13).
 With P model parameters, ‖ξ‖₂ ≈ √(2P)·2C/ε while ‖ū‖₂ ≤ C, so PDI ≥ 2√(2P)/ε (≥ 262 at ε = 0.6 for
